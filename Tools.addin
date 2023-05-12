@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>Revit Tool </Name>
+		<Assembly>Tool.dll</Assembly>
+		<FullClassName>Tools.AppCommand</FullClassName>
+		<Description>Add-In Revit Develop by PVN</Description>
+		<ClientId>79C79BD8-4793-47B5-808B-1AECD10783C5</ClientId>
+		<VendorId>Pham Van Ninh</VendorId>
+		<VendorDescription>PhamVanNinh</VendorDescription>
+	</AddIn>
+</RevitAddIns>

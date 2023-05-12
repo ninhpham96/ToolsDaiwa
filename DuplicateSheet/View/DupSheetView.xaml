@@ -1,0 +1,82 @@
+﻿<Window x:Class="Tools.DuplicateSheet.View.DupSheetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tools.DuplicateSheet.View"
+        mc:Ignorable="d"
+        Title="DupSheetView" WindowStartupLocation="CenterScreen" Height="450" Width="660">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="10">
+            <ListView Grid.Column="0" x:Name="lsvDuplicateSheet">
+                <ListView.View >
+                    <GridView>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <CheckBox Command="{Binding DataContext.ClickmeCommand,
+                                        RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                        CommandParameter="{Binding}"
+                                        IsChecked="{Binding isChecked, Mode=TwoWay}"
+                                        Tag="{Binding Id}"
+                                        x:Name="ckbNameSheet" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding SheetNumber }" Header="Sheet Number" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Name}" Header="Sheet Name" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Border Grid.Row="1" VerticalAlignment="Top" Height="100" BorderThickness="2" BorderBrush="red"  Margin="10" Grid.Column="1">
+                <StackPanel>
+                    <Label Content="Include Elements" />
+                    <StackPanel>
+                        <DockPanel>
+                            <CheckBox Width="60" Margin="10" Content="View" x:Name="ckbView"/>
+                            <CheckBox Width="60" Margin="10" Content="Legend" x:Name="ckbLegend"/>
+                            <CheckBox Width="80" Margin="10" Content="Schedules" x:Name="ckbSchedules"/>
+                            <CheckBox Margin="10" Content="Images" x:Name="ckbImages"/>
+                            <CheckBox Width="100" Margin="10" Content="Lines" x:Name="ckbLines"/>
+                            <CheckBox Margin="10" Content="Text" x:Name="ckbText"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <CheckBox Width="60" Margin="10" Content="Clouds" x:Name="ckbClouds"/>
+                            <CheckBox Width="60" Margin="10" Content="DWGs" x:Name="ckbDWGs"/>
+                            <CheckBox Width="80" Margin="10" Content="Symbols" x:Name="ckbSymbols"/>
+                            <CheckBox Width="800" Margin="10" Content="Dimensions" x:Name="ckbDimensions"/>
+                            <CheckBox Margin="10" Content="Additional revisions" x:Name="ckbAdditional"/>
+                        </DockPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" VerticalAlignment="Top" Height="70" BorderThickness="2" BorderBrush="Blue"  Margin="10" Grid.Column="1">
+                <StackPanel>
+                    <Label Content="View Duplicate Option"/>
+                    <DockPanel VerticalAlignment="Center">
+                        <RadioButton IsChecked="True" x:Name="ckbOp1" Content="Duplicate" Margin="10"/>
+                        <RadioButton x:Name="ckbOp2" Content="Duplicate Detailing" Margin="10" />
+                        <RadioButton x:Name="ckbOp3" Content="Duplicate Dependent" Margin="10" />
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+            <DockPanel HorizontalAlignment="Right">
+                <Label Content="Count"/>
+                <TextBox  TextAlignment="Center" x:Name="number" Text="{Binding CountNumber}" Width="30" Margin="2" />
+                <Button Command="{Binding RunCommand}" Margin="2 2 10 2" HorizontalAlignment="Right" Width="50" Content="Run"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>
